@@ -1,7 +1,12 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "tanstack-start-app",
-  "compatibility_date": "2025-09-24",
+  "name": "komodosail",
+  "compatibility_date": "2026-05-31",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "src/server.ts",
+  "main": ".output/server/index.mjs",
+  "assets": {
+    "directory": ".output/public"
+  },
+  "observability": {
+    "enabled": true
+  }
 }
