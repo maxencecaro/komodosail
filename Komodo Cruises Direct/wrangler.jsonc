@@ -1,10 +1,10 @@
 {
-  "name": "komodosail",
+  "name": "komodosail-worker",
   "compatibility_date": "2026-05-31",
   "compatibility_flags": ["nodejs_compat"],
-  "main": ".output/server/index.mjs",
+  "main": "dist/server/index.js",
   "assets": {
-    "directory": ".output/public"
+    "directory": "dist/client"
   },
   "observability": {
     "enabled": true
