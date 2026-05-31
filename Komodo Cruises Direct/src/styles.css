@@ -1,0 +1,239 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-ocean-deep: var(--ocean-deep);
+  --color-ocean: var(--ocean);
+  --color-lagoon: var(--lagoon);
+  --color-mist: var(--mist);
+  --color-sand: var(--sand);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-soft: 0 1px 2px oklch(0.2 0.05 240 / 0.04), 0 8px 24px oklch(0.2 0.05 240 / 0.06);
+  --shadow-elevated: 0 4px 12px oklch(0.15 0.05 240 / 0.08), 0 24px 48px oklch(0.15 0.05 240 / 0.12);
+  --shadow-deep: 0 30px 80px -20px oklch(0.15 0.05 240 / 0.35);
+
+  --gradient-ocean: linear-gradient(135deg, oklch(0.22 0.08 240) 0%, oklch(0.38 0.12 220) 50%, oklch(0.65 0.13 200) 100%);
+  --gradient-tide: linear-gradient(180deg, oklch(0.98 0.005 240) 0%, oklch(0.94 0.02 220) 100%);
+  --gradient-deep: linear-gradient(180deg, oklch(0.18 0.06 245) 0%, oklch(0.10 0.04 245) 100%);
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizDREVItHgc8qDIbSTKq4XKVjU.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizBREVItHgc8qDIbSTKq4XkRiUa1NJOUg.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50ojIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff2") format("woff2");
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(0.99 0.003 240);
+  --foreground: oklch(0.18 0.04 245);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 245);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 245);
+
+  --primary: oklch(0.22 0.08 240);
+  --primary-foreground: oklch(0.98 0.005 240);
+
+  --secondary: oklch(0.95 0.015 230);
+  --secondary-foreground: oklch(0.22 0.08 240);
+
+  --muted: oklch(0.96 0.008 235);
+  --muted-foreground: oklch(0.48 0.025 240);
+
+  --accent: oklch(0.55 0.13 210);
+  --accent-foreground: oklch(0.98 0.005 240);
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 240);
+
+  --border: oklch(0.92 0.01 235);
+  --input: oklch(0.92 0.01 235);
+  --ring: oklch(0.55 0.13 210);
+
+  /* Ocean Deep palette */
+  --ocean-deep: oklch(0.22 0.08 240);   /* #0c2340 */
+  --ocean: oklch(0.38 0.12 230);        /* #1a4a6e */
+  --lagoon: oklch(0.6 0.11 210);        /* #2d8a9e */
+  --mist: oklch(0.78 0.08 195);         /* #5cbdb9 */
+  --sand: oklch(0.96 0.02 85);
+
+  --chart-1: oklch(0.22 0.08 240);
+  --chart-2: oklch(0.55 0.13 210);
+  --chart-3: oklch(0.75 0.1 195);
+  --chart-4: oklch(0.65 0.15 60);
+  --chart-5: oklch(0.5 0.2 25);
+
+  --sidebar: oklch(0.99 0.003 240);
+  --sidebar-foreground: oklch(0.18 0.04 245);
+  --sidebar-primary: oklch(0.22 0.08 240);
+  --sidebar-primary-foreground: oklch(0.98 0.005 240);
+  --sidebar-accent: oklch(0.95 0.015 230);
+  --sidebar-accent-foreground: oklch(0.22 0.08 240);
+  --sidebar-border: oklch(0.92 0.01 235);
+  --sidebar-ring: oklch(0.55 0.13 210);
+}
+
+.dark {
+  --background: oklch(0.12 0.04 245);
+  --foreground: oklch(0.98 0.005 240);
+  --card: oklch(0.18 0.05 245);
+  --card-foreground: oklch(0.98 0.005 240);
+  --popover: oklch(0.18 0.05 245);
+  --popover-foreground: oklch(0.98 0.005 240);
+  --primary: oklch(0.78 0.08 195);
+  --primary-foreground: oklch(0.18 0.05 245);
+  --secondary: oklch(0.25 0.06 240);
+  --secondary-foreground: oklch(0.98 0.005 240);
+  --muted: oklch(0.22 0.05 240);
+  --muted-foreground: oklch(0.7 0.03 230);
+  --accent: oklch(0.6 0.13 210);
+  --accent-foreground: oklch(0.12 0.04 245);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01", "ss03";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-sans { font-family: var(--font-sans); }
+
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .bg-gradient-ocean { background: var(--gradient-ocean); }
+  .bg-gradient-tide { background: var(--gradient-tide); }
+  .bg-gradient-deep { background: var(--gradient-deep); }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-deep { box-shadow: var(--shadow-deep); }
+
+  .glass {
+    background: color-mix(in oklch, white 70%, transparent);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+  .glass-dark {
+    background: color-mix(in oklch, var(--ocean-deep) 60%, transparent);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes wave-pulse {
+  0%, 100% { transform: scaleX(1); opacity: 0.5; }
+  50% { transform: scaleX(1.05); opacity: 1; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-marquee { animation: marquee 40s linear infinite; }

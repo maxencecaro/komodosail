@@ -1,0 +1,115 @@
+// Per-cruise price overrides (keyed by cruise.name, normalized).
+// Values: number = priceIDR per person; "partner" = price shown on partner site.
+
+export type PriceOverride = number | "partner";
+
+const RAW: Record<string, PriceOverride> = {
+  "Arumi (Depart Lombok)": 5_750_000,
+  "Kimochi": 1_750_000,
+  "Kanthaka": 7_350_000,
+  "Carnaby II": 6_500_000,
+  "Em\u2019Ocean": 6_500_000,
+  "Cordelia": 6_350_000,
+  "Sora": 4_750_000,
+  "Marea": 5_250_000,
+  "Raffles Cruise": 8_750_000,
+  "Umami": 2_850_000,
+  "Tara": 4_950_000,
+  "Meccadina (Depart Flores)": 6_500_000,
+  "Princess Nabila": 4_950_000,
+  "King Cirox 2": 2_750_000,
+  "Princess Lala": 2_950_000,
+  "Singkolo": 4_250_000,
+  "El Ashar": 4_000_000,
+  "Vhale": 4_450_000,
+  "Jessie": 3_500_000,
+  "Naira": 3_500_000,
+  "Amore": 3_350_000,
+  "Elbark": 6_000_000,
+  "Angelica": 6_950_000,
+  "Semesta": 6_000_000,
+  "North Blue": 2_900_000,
+  "Gaisan": 4_550_000,
+  "Navila": 6_500_000,
+  "Aimar": 5_000_000,
+  "Andalucia": 4_150_000,
+  "Invictus": 3_750_000,
+  "Neptune": 10_000_000,
+  "Gammara": 7_100_000,
+  "Sipakatau": 3_500_000,
+  "Sundari": 5_650_000,
+  "Ramadani": 2_950_000,
+  "Balaraja": 3_000_000,
+  "Flores Utama": 3_000_000,
+  "Osiana Alo": 3_500_000,
+  "Dahayu": 3_750_000,
+  "Kanha Loka": 4_500_000,
+  "La Dyana": 3_550_000,
+  "Octopus": 3_750_000,
+  "Al Fathran": 5_000_000,
+  "Dewi": 2_800_000,
+  "Hatira Hela": 5_300_000,
+  "Yumana": 5_450_000,
+  "Elrora": 6_500_000,
+  "Le Costa": 17_500_000,
+  "Diara La Oceano": 3_000_000,
+  "Lamborajo 1": 3_000_000,
+  "Almadira": 3_000_000,
+  "Pandawa": 3_750_000,
+  "Bajo Sunset Voyages": 3_450_000,
+  "Maheswari": 4_550_000,
+  "Derya": 5_750_000,
+  "3 Island": 3_800_000,
+  "Refviero": 4_500_000,
+  "Gajah Putih": 3_250_000,
+  "Nadia": 4_000_000,
+  "Behike": "partner",
+  "Umami (2J1N)": 2_400_000,
+  "Senada": 3_550_000,
+  "Nagendra": "partner",
+  "Dua": 5_950_000,
+  "Budi Utama": 4_750_000,
+  "Ciela": 4_000_000,
+  "Jofiel": "partner",
+  "Maipa": "partner",
+  "Cajoma V": "partner",
+  "Alore": "partner",
+  "Abizar": "partner",
+  "Amalfi": 4_000_000,
+  "Narasea": "partner",
+  "Bajo Sunset": "partner",
+  "Malca": 3_550_000,
+  "Ayvara": 6_000_000,
+  "Catnazse": 5_250_000,
+  "Ophelia": 2_500_000,
+  "East Blue": 3_350_000,
+  "Cirox": 2_350_000,
+  "Santemako": 3_450_000,
+  "Arimbi": 3_250_000,
+  "Dragonet": "partner",
+  "Sentral": 2_250_000,
+  "SIP": 2_650_000,
+  "My Moon": 3_600_000,
+  "Natural": 3_500_000,
+  "Mega Trusmi": 5_500_000,
+  "Zada Ulla": "partner",
+  "Nara": 5_750_000,
+  "Sehat Elona (D\u00e9part Lombok)": 6_300_000,
+  "Sehat Elona (D\u00e9part Flores)": 4_000_000,
+};
+
+const norm = (s: string) =>
+  s.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[\u2018\u2019'`]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+const MAP = new Map<string, PriceOverride>(
+  Object.entries(RAW).map(([k, v]) => [norm(k), v]),
+);
+
+export function getCruisePriceOverride(name?: string): PriceOverride | undefined {
+  if (!name) return undefined;
+  return MAP.get(norm(name));
+}
